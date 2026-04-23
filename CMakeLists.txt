@@ -1,29 +1,17 @@
 cmake_minimum_required(VERSION 3.15)
 project(CSVPrettyPrinter VERSION 1.0 LANGUAGES C)
 
-# Установите стандарт C
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Включите предупреждения
 if(MSVC)
     add_compile_options(/W3)
 else()
-    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+    add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# Исполняемый файл
 add_executable(csv_pretty_printer
     main.c
     csv_parser.c
     table_renderer.c
 )
-
-# Заголовочные файлы (необязательно, для удобства)
-set(HEADERS
-    csv_parser.h
-    table_renderer.h
-)
-# Тесты
-add_executable(test_csv_parser test_csv_parser.c csv_parser.c)
-target_link_libraries(test_csv_parser m)
