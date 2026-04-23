@@ -7,14 +7,12 @@ int main(int argc, char* argv[]) {
     const char* input_file = "input.csv";
     const char* output_file = "output.txt";
     
-    // Парсим CSV
     CSVData* data = parse_csv(input_file);
     if (!data) {
         fprintf(stderr, "Error: Failed to parse CSV file\n");
         return 1;
     }
     
-    // Рисуем таблицу
     int result = render_table_to_file(data, output_file);
     if (result != 0) {
         fprintf(stderr, "Error: Failed to render table\n");
